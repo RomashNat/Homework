@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://js.cx/libs/animate.js"></script>
+  
+  <img src="boat.png" class="progress"  width="350" height="350" id="boat">
+</div>
+
+<style>
+
+  @keyframes go-left-right {        
+    from { left: 0px; }             
+    to { left: calc(100% - 650px); } 
+  }
+
+  img {
+ margin-top: 10%;
+  }
+
+  .sun {
+    position: absolute;
+    top: 50px;
+    right: 20%;    
+    width: 80px;
+    height: 80px;    
+    animation: sun-rotate 15s linear infinite;    
+    border-radius: 100%;
+    background: #ffcf11;
+    box-shadow: 0 0 100px #ffdf05;
+}
+.sun-wrapper {
+    position: absolute;
+    
+    width: 100%;
+    height: 100%;
+    
+    transform-origin: 50%;
+    animation: sun-move 100s linear infinite;
+}
+
+.sun div {
+    position: absolute;
+    top: -20px;
+    left: 50%;    
+    width: 2px;
+    height: 100px;
+    margin-left: -1px;    
+    border: 10px solid #ffcf11;
+    border-width: 10px 0 10px 0;
+}
+.sun div:nth-child(2) {
+    transform: rotate(18deg);
+}
+.sun div:nth-child(3) {
+    transform: rotate(36deg);
+}
+.sun div:nth-child(4) {
+    transform: rotate(54deg);
+}
+.sun div:nth-child(5) {
+    transform: rotate(72deg);
+}
+.sun div:nth-child(6) {
+    transform: rotate(90deg);
+}
+.sun div:nth-child(7) {
+    transform: rotate(-18deg);
+}
+.sun div:nth-child(8) {
+    transform: rotate(-36deg);
+}
+.sun div:nth-child(9) {
+    transform: rotate(-54deg);
+}
+.sun div:nth-child(10) {
+    transform: rotate(-72deg);
+}
+@keyframes sun-rotate {
+    to {
+        transform: rotate(1turn);
+    }
+}
+
+ .progress {
+    animation: go-left-right 20s infinite alternate;
+
+    position: absolute;
+   
+  }
+
+  .img-hor-vert {
+    -moz-transform: scale(-1, -1);
+    -o-transform: scale(-1, -1);
+    -webkit-transform: scale(-1, -1);
+    transform: scale(-1, -1);
+}
+</style>
+<div class="sun-wrapper">
+  <div class="sun">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+  </div>
+</div>
+
+<div class="cloud-1"></div>
+
+</div>
+
+
+   <script>
+     
+     boat.onclick = function() {
+      //...
+      let times = 1;
+    
+      function go() {
+        if (times % 3) {
+          // плыть вправо
+          boat.classList.remove('back');
+          boat.style.marginLeft = 100 * times + 200 + 'px';
+        } else {
+          // плыть влево
+          boat.classList.add('back');
+          boat.style.marginLeft = 100 * times - 200 + 'px';
+        }
+        
+    
+      }
+    
+      go();
+
+         boat.addEventListener('transitionend', function() {
+        times++;
+        go();
+      });
+    };
+</script>  
+</body>
+</html>

@@ -1,0 +1,16 @@
+#field {
+    height: 500px;
+    border-bottom: 50px rgb(172, 235, 143) groove;
+    position: relative;
+  }
+
+ 
+  #ball {
+    position: absolute;
+    cursor: pointer;
+  }
+
+  h4{
+  
+    color: rgb(98, 155, 23);
+  }
