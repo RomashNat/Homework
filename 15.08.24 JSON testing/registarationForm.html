@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container" style="border: 3px double rgb(120, 133, 177); margin-top: 5%; width: 600px; height: 400px;">
+        <h1 class="text-center mt-5">Регистрация</h1>
+        <form class="mx-auto w-50 mt-5" id="registationForm" method="post">
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Почта </label>
+              <input type="email" class="form-control" id="exampleInputEmail1" name="email_form" aria-describedby="emailHelp">
+              <div id="emailHelp" class="form-text"></div>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Пароль</label>
+              <input type="password" class="form-control" id="exampleInputPassword1" name="password_form">
+            </div>
+            <button type="submit" class="btn btn-info">Отправить</button>
+        </form>
+    </div>
+    <script>
+      function introduction_JSON()
+      {
+          let obj = 
+          {
+              name:"Bob",
+              gender: "male",
+          }
+          let stringObj = JSON.stringify(obj);
+          console.log(`String JSON: ${stringObj}`, typeof stringObj);
+          console.log(`Obj: ${obj.name + " " + obj.gender}`, typeof obj);
+          
+          let JSONstring = "{\"email_form\": \"email@mail.ru\", \"password_form\": \"7654321\"}";
+          let JSONobj = JSON.parse(JSONstring);
+          console.log(JSONobj);
+      }
+
+      function ajax_request()
+      {
+          let obj = 
+          {
+                 email_form: "email@mail.ru",
+              password_form: "7654321",
+                  firstName: "Bob",
+                     gender: "male"
+          }
+          $.ajax({
+              url: 'request.php',
+              type: 'POST',
+              dataType: 'json',
+              data: JSON.stringify(obj),
+              contentType: 'application/json',
+              success: function(res){
+                  alert(res.email_form + " " + res.password_form + " " + res.firstName + " " + res.gender);
+              },
+              error: function(jqXHR,error){
+                  console.log(error, jqXHR.status);
+              }
+          });
+      }
+      ajax_request();
+  </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  </body>
+</html>
