@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="test">
+        <h1>AJAX</h1>
+        <button type="button" onclick="testAjax()">Поменять данные</button>
+    </div>
+    <script>
+        function testAjax(){
+      
+            const xhttp = new XMLHttpRequest();
+            console.log(xhttp.readyState);
+            xhttp.open("GET", "test_ajax.txt");
+            xhttp.send();
+        
+            xhttp.onreadystatechange = () => {
+                
+                if (xhttp.readyState == 4 && xhttp.status == 200)
+                {
+                    document.getElementById("test").innerHTML = xhttp.responseText;
+                    console.log("Test");
+                }
+            };
+            
+        } 
+    </script>
+</body>
+</html>
